@@ -10,4 +10,4 @@ struct Voiture{
 	int etat = 0; 
 }
 
-struct Voiture 
+struct Voiture VoitureEss;
