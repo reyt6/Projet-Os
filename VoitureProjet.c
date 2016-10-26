@@ -12,13 +12,13 @@ struct Voiture{
 	int etat; 
 };
 int main(){
+  int moyenne ;
   int start = 0;
   while(start == 0){
-    char c = getchar();
-    if(c == '\n'){
-      // double return pressed!
-      break;
-    }
+  char c = getchar();
+  if(c == '\n'){
+    break;
+  }
     start =1;
   }
 	struct Voiture Voiture;
@@ -28,15 +28,14 @@ int main(){
 	time_t t;
 	section = 3;
   	id = 22;
-   	/* Intializes random number generator */
    	srand((unsigned) time(&t));
-   	/* Print 5 random numbers from 0 to 49 */
-   	for(int i = 0 ; i < section ; i++ ) 
+	int i;   	
+	while(i < section) 
   	 {
 		temps = rand() % 3600;
 		printf("Voiture : %i | %ld|\n", id ,temps);
-  	 }
+		i++;  	 
+	}
    
    return(0);
 }
-// ceci est un test pour voir si je suis contributeur 
