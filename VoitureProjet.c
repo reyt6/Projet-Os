@@ -9,7 +9,8 @@ struct Voiture{
 	char tmpsSec3[10];
 	double tmpsTotal;
 	int place;
-	int etat; 
+	int stand;
+	int abandon;
 };
 int main(){
   int moyenne ;
