@@ -4,16 +4,20 @@
 
 struct Voiture{
 	int id;
-	char tmpsSec1[10];
-	char tmpsSec2[10];
-	char tmpsSec3[10];
-	double tmpsTotal;
+	int tmpsSect[3];
+	int tmpsTotal;
 	int place;
-	int stand;
-	int abandon;
+	int etat; 
+
 };
-int main(){
-  int moyenne ;
+int randomNum(int min, int max){
+  int n = 0;		
+    while(n < min || n > max){
+      n = rand() % ((max - min +1) + min);
+    }
+    return n;
+}
+int startRace(){
   int start = 0;
   while(start == 0){
   char c = getchar();
@@ -22,21 +26,40 @@ int main(){
   }
     start =1;
   }
+}
+int toHeure(int sec){
+	return toMinute(sec) / 60;
+}
+int toMinute(int sec){
+	return sec / 60;
+}
+int toSeconde(int sec){
+	return sec -60 * toMinute(sec);
+}
+int toMilli(){
+	return randomNum(100, 999);
+}
+int main(){
 	struct Voiture Voiture;
-	long temps;
-	int id = Voiture.id = 00;
+	Voiture.id = 22;
+	Voiture.tmpsTotal = 0;
 	int section;
 	time_t t;
 	section = 3;
-  	id = 22;
    	srand((unsigned) time(&t));
-	int i;   	
+	int i;   
+	int randomNum(int, int);
+	int toMinute(int);
+	int startRace();
+	startRace();	
 	while(i < section) 
   	 {
-		temps = rand() % 3600;
-		printf("Voiture : %i | %ld|\n", id ,temps);
-		i++;  	 
+		
+		Voiture.tmpsSect[i] = randomNum(45,55);
+		Voiture.tmpsTotal = Voiture.tmpsTotal + Voiture.tmpsSect[i];
+		i++;
 	}
+	printf("Temps de Voiture n° %i : | %d:%d:%d |\n", Voiture.id ,toMinute(Voiture.tmpsTotal),toSeconde(Voiture.tmpsTotal),toMilli());
    
    return(0);
 }
