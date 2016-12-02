@@ -9,6 +9,7 @@ struct Voiture{
 	int id;
 	int tmpsSect[3];
 	int tmpsTotal;
+	int milli;
 
 };
 int randomNum(int min, int max){
@@ -64,6 +65,13 @@ void setID(struct Voiture voiture[]){
     voiture[20].id = 31;
     voiture[21].id = 94;
 }
+void showVoiture(struct Voiture voiture[]){
+	int count=0;
+	while(count<22){
+		printf("Temps de Voiture n° %d : | %d:%d:%d |\n", voiture[count].id , toMinute(voiture[count].tmpsTotal),toSeconde(voiture[count].tmpsTotal),voiture[count].milli);
+		count++;
+	}
+}
 void setTemps(struct Voiture voiture[]){
 	int section;
 	time_t t;
@@ -77,13 +85,24 @@ void setTemps(struct Voiture voiture[]){
 		voiture[j].tmpsTotal = 0;
 		while(i < section){
 			voiture[j].tmpsSect[i] = randomNum(45,55);
-			printf( "%d|%d ",voiture[j].id, voiture[j].tmpsSect[i]);
 			voiture[j].tmpsTotal += voiture[j].tmpsSect[i];
 			i++;
 		}
-		printf("Temps de Voiture n° %d : |%d %d:%d:%d |\n", voiture[j].id , voiture[j].tmpsTotal, toMinute(voiture[j].tmpsTotal),toSeconde(voiture[j].tmpsTotal),toMilli());
+		voiture[j].milli = toMilli();
 		j++;
 	}
+}
+int compare(const void* v1, const void* v2){
+	struct Voiture sv1 = *(const struct Voiture*)v1;
+	struct Voiture sv2 = *(const struct Voiture*)v2;
+	int compareVoiture = sv1.tmpsTotal - sv2.tmpsTotal;
+	if (compareVoiture == 0) 
+		return sv1.milli - sv2.milli;
+	else
+		return compareVoiture;
+}
+void sortVoiture(struct Voiture v[]){
+	qsort(v, 22, sizeof(struct Voiture), compare);
 }
 int main(){
 	struct Voiture voiture[22];
@@ -91,6 +110,11 @@ int main(){
 	void startRace();
 	startRace();	
 	setTemps(voiture);
+	printf("-------Voitures non organisées----------\n");
+	showVoiture(voiture);
+	printf("--------------Voitures organisées--------\n");
+	sortVoiture(voiture);
+	showVoiture(voiture);
 	return(0);
 }
 
