@@ -191,7 +191,7 @@ int main(){
 	int length = 22;
 	int numTour = 10;
 	int i = 0;
-	/*
+	
 	printf("\e[1;1H\e[2J");
 	printf("			Vendredi matin\n");
 	printf("		 Seance d'essais libres(1h30)\n");
@@ -252,10 +252,10 @@ int main(){
 	printf("Resultat final\n\n");
 	sortVoiture(voiture);
 	showVoiture(voiture,22);
-	
+
 	printf("Enter pour continuer");
 	startRace();
-	
+
 	printf("\e[1;1H\e[2J");
 	printf("			Samedi matin\n");
 	printf("		 Seance d'essais libres(1h)\n");
@@ -288,10 +288,10 @@ int main(){
 	printf("Resultat final\n\n");
 	sortVoiture(voiture);
 	showVoiture(voiture,22);
-	
+
 	printf("Enter pour continuer");
 	startRace();
-		*/
+		
 	printf("\e[1;1H\e[2J");
 	printf("			Samedi apres-midi\n");
 	printf("		 Seance de qualifications(18min)\n");
@@ -325,10 +325,10 @@ int main(){
 		voitureQ1[length] = voiture[length];
 		length++;
 	}
-	
+
 	printf("Enter pour continuer");
 	startRace();
-	
+
 	length = 16;
 	printf("\e[1;1H\e[2J");
 	printf("			Samedi apres-midi\n");
@@ -364,10 +364,10 @@ int main(){
 		length++;
 	}
 
-	
+
 	printf("Enter pour continuer");
 	startRace();
-	
+
 	length = 10;
 	printf("\e[1;1H\e[2J");
 	printf("			Samedi apres-midi\n");
@@ -404,24 +404,24 @@ int main(){
 	}
 	length = 0;
 	while(length < 10){
-		voiture[length] = voitureQ3[length]; 
-		voitureCourse[length] = voitureQ3[length]; 
+		voiture[length] = voitureQ3[length];
+		voitureCourse[length] = voitureQ3[length];
 		length++;
 	}
 	while(length < 16){
 		voiture[length] = voitureQ2[length];
-		voitureCourse[length] = voitureQ2[length]; 
+		voitureCourse[length] = voitureQ2[length];
 		length++;
 	}
 	while(length < 22){
 		voiture[length] = voitureQ1[length];
-		voitureCourse[length] = voiture[length]; 
+		voitureCourse[length] = voiture[length];
 		length++;
 	}
 
 	printf("Enter pour continuer");
 	startRace();
-	
+
 	length = 22;
 	i = 0;
 	printf("\e[1;1H\e[2J");
@@ -429,10 +429,10 @@ int main(){
 	printf("				La course \n");
 	printf("		Ordre de depart de la course \n");
 	showOrdreCourse(voiture);
-	
+
 	printf("Enter pour continuer");
 	startRace();
-	
+
 	numTour = 2;
 	while(i<numTour){
 		printf("\e[1;1H\e[2J");
@@ -471,18 +471,20 @@ int main(){
 			length++;
 		}
 		showcourse(voitureCourse, voiture);
-		sleep(2);
-		i++;
 		
 		printf("Enter pour continuer");
 		startRace();
 		
-		sortVoiture(voitureCourse);
-		printf("\e[1;1H\e[2J");
-		printf("			Dimanche apres-midi\n");
-		printf("				La course \n");
-		printf("			Resultat de la course");
-		
+		i++;
 	}
+	printf("Enter pour continuer");
+	startRace();
+
+	printf("\e[1;1H\e[2J");
+	printf("			Dimanche apres-midi\n");
+	printf("				La course \n");
+	printf("			Resultat de la course\n");
+	sortVoiture(voitureCourse);
+	showVoiture(voitureCourse, length);
 }
 
